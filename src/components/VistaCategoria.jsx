@@ -4,14 +4,13 @@ import ListadoItems from "./ListadoItems";
 
 // Documentar
 const VistaCategoria = () => {
-    const { categoriasState } = useContext(ContextoCategorias);
-    if (!categoriasState.categoriaSeleccionada) return null;
-    const categoria = categoriasState.categoriaSeleccionada;
+    const { categoriaSeleccionada } = useContext(ContextoCategorias);
+    if (!categoriaSeleccionada) return null;
 
     return (
         <div id="vistaCategoria">
-            <h3 className="titulo">Categoria: {categoria.name}</h3>
-            <ListadoItems categoria={categoria} />
+            <h3 className="titulo">Categoria: {categoriaSeleccionada.name}</h3>
+            <ListadoItems categoria={categoriaSeleccionada} />
         </div>
     )
 };

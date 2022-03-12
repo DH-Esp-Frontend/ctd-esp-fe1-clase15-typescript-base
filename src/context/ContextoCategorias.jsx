@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 // Debemos tipar nuestro estado inicial.
 const initialState = {
     categoriaSeleccionada: null,
+    seleccionarCategoria: (categoria) => {}
 };
 
 const reducer = (state, action) => {
@@ -12,7 +13,7 @@ const reducer = (state, action) => {
 export const ContextoCategorias = React.createContext();
 
 const ProviderCategorias = ({ children }) => {
-    const [categoriasState, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     // Debemos tipar la siguiente funcion que carga las categorias
     const seleccionarCategoria = (categoria) => {
@@ -27,7 +28,7 @@ const ProviderCategorias = ({ children }) => {
     return (
         <ContextoCategorias.Provider
             value={{
-                categoriasState,
+                categoriaSeleccionada: state.categoriaSeleccionada,
                 seleccionarCategoria,
             }}
         >
